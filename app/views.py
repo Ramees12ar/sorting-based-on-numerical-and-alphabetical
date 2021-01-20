@@ -6,6 +6,9 @@ from django.http import HttpResponse,JsonResponse
 def home(request):
     return render(request,"index.html",{})
 
+def index(request):
+    return render(request,"index.html",{})
+
 def adding(request):
     n=request.POST.get("data")
     if n=="":
