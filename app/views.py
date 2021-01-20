@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from app.models import *
+from django.http import HttpResponse,JsonResponse
 
 # Create your views here.
 def home(request):
@@ -7,6 +8,8 @@ def home(request):
 
 def adding(request):
     n=request.POST.get("data")
+    if n=="":
+        return  HttpResponse("<script>alert('Please input data');window.location.href='/index/';</script>")
     if n.isdigit()==True:
         print("int")
         dat=numeric(data=n)
