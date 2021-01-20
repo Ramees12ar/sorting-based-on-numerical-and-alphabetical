@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sorting</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class=container>
+		<div class="jumbotron text-center">
+			<h1>Sorting based on inputs</h1>
+			<form action="{% url 'adding' %}" method="post">{% csrf_token %}
+				<input type="text" name="data" autocomplete="off" class="form-control" style="width:250px;margin: auto;">
+				<button class="btn btn-success m-2 font-weight-bold">Add</button>
+			</form>
+			<form action="{% url 'clear' %}" method="post" class="float-right">{% csrf_token %}
+				<button class="btn btn-warning font-weight-bold">clear all</button>
+			</form>
+		</div>
+	</div>
+	<div class="container text-center">
+  		<div class="row">
+    		<div class="col-sm">
+      			<h3 class="h3 font-weight-bold">Alphabetic</h3>
+	      			<ul class="list-group">
+						{% for i in alp %}
+	      				<li class="list-group-item">
+							<form action="{% url 'delete' %}" method="post">{% csrf_token %}
+								<h3><input value="{{i.lid}}" name="val" style="display:none">
+									<input value="1" name="id" style="display:none">{{i.data}}
+									<button class="btn btn-danger float-right">delete</button>
+								</h3>
+							</form>
+						</li>
+						{% endfor %}
+	      			</ul>
+    		</div>
+    		<div class="col-sm">
+      			<h3 class="h3 font-weight-bold">Numeric</h3>
+	      			<ul class="list-group">
+						{% for i in num %}
+						<li class="list-group-item">
+							<form action="{% url 'delete' %}" method="post">{% csrf_token %}
+								<h3><input value="{{i.lid}}" name="val" style="display:none">
+									<input value="2" name="id" style="display:none">{{i.data}}
+									<button class="btn btn-danger float-right">delete</button>
+								</h3>
+							</form>
+						</li>
+						{% endfor %}  
+	      			</ul>
+    		</div>
+    		<div class="col-sm">
+      			<h3 class="h3 font-weight-bold">Alpha numeric</h3>
+	      			<ul class="list-group">
+						{% for i in alnum %}
+						<li class="list-group-item">
+							<form action="{% url 'delete' %}" method="post">{% csrf_token %}
+								<h3><input value="{{i.lid}}" name="val" style="display:none">
+									<input value="3" name="id" style="display:none">{{i.data}}
+									<button class="btn btn-danger float-right">delete</button>
+								</h3>
+							</form>
+						</li>
+						{% endfor %}  
+	      			</ul>
+    		</div>
+		  </div>
+	</div>
+</body>
+</html>
