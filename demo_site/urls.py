@@ -21,6 +21,7 @@ from app.views import *
 urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^$',home),
+    url(r'^index',index,name="index"),
     url(r'^adding',adding,name="adding"),
     url(r'^clear',clear,name="clear"),
     url(r'^delete',delete,name="delete"),
