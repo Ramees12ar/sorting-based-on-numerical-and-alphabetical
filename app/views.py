@@ -4,10 +4,16 @@ from django.http import HttpResponse,JsonResponse
 
 # Create your views here.
 def home(request):
-    return render(request,"index.html",{})
+    a=numeric.objects.all()
+    b=alphabet.objects.all()
+    c=alpha_numer.objects.all()
+    return render(request,"index.html",{"num":a,"alp":b,"alnum":c})
 
 def index(request):
-    return render(request,"index.html",{})
+    a=numeric.objects.all()
+    b=alphabet.objects.all()
+    c=alpha_numer.objects.all()
+    return render(request,"index.html",{"num":a,"alp":b,"alnum":c})
 
 def adding(request):
     n=request.POST.get("data")
